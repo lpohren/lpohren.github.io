@@ -3,20 +3,60 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 <script src="js/main.js"></script>
 
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<link href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
 <link rel="stylesheet" type="text/css" href="css/main.css">
 
 <body ng-app="myApp" ng-controller="myCtrl">
-        <div class="jumbotron-sign">
-                <h2>Search Clients</h2>
-                <div>
-                    <span class="glyphicon glyphicon-search"></span> 
-                    <input type="text" placeholder="Name" style="float:left; width:90%">
+        <div class="jumbotron-sign back" style="flex-direction: column; display: flex;">
+                  
+                <div style="flex: 0;">
+                        <h2>Search Clients</h2>
+                             
+                                <input type="text" placeholder="Name" style="float:left; width:44rem">
+                                <button ng-click="searchClient()" class="btn btn-default small-width"><span class="glyphicon glyphicon-search"></span></button>
+                                <button ng-click="openAddClient()" style="background-color: #eab2a8; width: 40px;" class="btn btn-default small-width"><span class="glyphicon glyphicon-plus"></span></button>
+                </div>                
+
+                <div style="flex: 1;">
+                        <button ng-repeat="client in clients"  style="margin-bottom: 2px;text-align: left; width: 100%; background-color: #e5edf7; display: flex;" ng-click="infoClient()" class="btn btn-default small-width">
+                                <span style="    flex: 0;" class="glyphicon glyphicon-user"></span>
+                                <div style=" margin-top: 15px; margin-left: 16px;">{{client.name}}</div>
+                        </button>
+                </div> 
+
+        </div>
+        <div class="blur" ng-hide="hideAdd">
+                <div class="jumbotron-add">
+                        <input type="text" placeholder="Name" style="float:left; width:35rem">
+                        <input type="text" placeholder="CPF" style="float:left; width:35rem">
+                        <input type="text" placeholder="Birth" style="float:left; width:35rem">
+                        
+                        <div class="form-check">
+                                <input class="form-check-input input-checkbox" type="checkbox" id="defaultCheck1">
+                                <label class="form-check-label label-checkbox" for="defaultCheck1" >Back Restriction</label>
+                        </div>
+                        <div class="form-check">
+                                <input class="form-check-input input-checkbox" type="checkbox" id="defaultCheck1">
+                                <label class="form-check-label label-checkbox" for="defaultCheck1" >Chest Restriction</label>
+                        </div>
+                        <div class="form-check">
+                                <input class="form-check-input input-checkbox" type="checkbox" id="defaultCheck1">
+                                <label class="form-check-label label-checkbox" for="defaultCheck1" >Biceps Restriction</label>
+                        </div>
+                        <div class="form-check">
+                                <input class="form-check-input input-checkbox" type="checkbox" id="defaultCheck1">
+                                <label class="form-check-label label-checkbox" for="defaultCheck1" >Triceps Restriction</label>
+                       </div>
+
+                        <input type="text" placeholder="Height" style="float:left; width:35rem">
+                        <input type="text" placeholder="Weight" style="float:left; width:35rem">                      
+
+                        <button ng-click="addClient()" class="btn btn-default full-width add-client" style="bottom: 68px;"><span class="glyphicon glyphicon-ok"></span></button>
+                        <button ng-click="closeAddClient()" class="btn btn-default full-width add-client" style="background-color: #ff6d6d;"><span class="glyphicon glyphicon-remove"></span></button>
                 </div>
-                
         </div>
 </body>
 </html>
