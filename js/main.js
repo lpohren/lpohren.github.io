@@ -18,12 +18,10 @@ app.controller('myCtrl', function($scope, $http, $location) {
         // });
 
         var url = 'http://ec2-54-94-174-189.sa-east-1.compute.amazonaws.com:56799/api/gdws/tmethods/all/%7B%22class%22:%20%22users%22,%22method%22:%20%22insert%22,%22use_username%22:%20%22teste1%22,%22use_password%22:%20%22teste1%22,%22use_admin%22:%202%7D';
-        
-        $http.post(url)
+        console.log('here');
+        $http.get(url)
         .then(function(response) {
             console.log(response);
-            $scope.machines = response.data.iteMachines;
-            $scope.jenkins = response.data.jenkinsMachine;
         });
 
     }
